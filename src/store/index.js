@@ -19,7 +19,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export default () => {
     const devTools =
         process.env.NODE_ENV === "production"
-            ? applyMiddleware(...middlewares)
+            ? applyMiddleware(...middleware)
             : compose(
                   applyMiddleware(...middleware),
                   window.__REDUX_DEVTOOLS_EXTENSION__
