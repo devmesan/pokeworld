@@ -1,0 +1,30 @@
+.box-counter {
+    width: 100%;
+    overflow: hidden;
+}
+
+.changing-left {
+    animation: slide-left 0.1s forwards;
+}
+
+@keyframes slide-left {
+    0% { 
+        transform: translateX(-2%); 
+    }
+    100% { 
+        transform: translateX(0); 
+    }
+}
+
+.changing-right {
+    animation: slide-right 0.1s forwards;
+}
+
+@keyframes slide-right {
+    0% { 
+        transform: translateX(2%); 
+    }
+    100% { 
+        transform: translateX(0); 
+    }
+}

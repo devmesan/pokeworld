@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createBrowserHistory } from "history";
+
+import { Router, Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
+import "./styles/style.scss";
+import "./styles/main.css";
+
+import PokemonList from "./pages/PokemonList";
+import PokemonDetail from "./pages/PokemonDetail";
+import MyPokemonList from "./pages/MyPokemonList";
+import NotFound from "./pages/NotFound";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const history = createBrowserHistory({ basename: process.env.PUBLIC_URL });
+
+    return (
+        <>
+            <Router history={history}>
+                <Switch>
+                    <Route exact path="/" component={PokemonList} />
+                    <Route
+                        exact
+                        path="/pokemon-detail"
+                        component={PokemonDetail}
+                    />
+                    <Route
+                        exact
+                        path="/my-pokemon-list"
+                        component={MyPokemonList}
+                    />
+                    <Route path="*" component={NotFound}></Route>
+                </Switch>
+            </Router>
+
+            <ToastContainer />
+        </>
+    );
 }
 
 export default App;
