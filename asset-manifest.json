@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pokeworld/static/css/main.ba1a534f.chunk.css",
-    "main.js": "/pokeworld/static/js/main.d95eb469.chunk.js",
-    "main.js.map": "/pokeworld/static/js/main.d95eb469.chunk.js.map",
+    "main.js": "/pokeworld/static/js/main.b126764c.chunk.js",
+    "main.js.map": "/pokeworld/static/js/main.b126764c.chunk.js.map",
     "runtime-main.js": "/pokeworld/static/js/runtime-main.39f8b3b6.js",
     "runtime-main.js.map": "/pokeworld/static/js/runtime-main.39f8b3b6.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/pokeworld/static/css/2.ccc6f86f.chunk.css",
@@ -36,6 +36,6 @@
     "static/css/2.ccc6f86f.chunk.css",
     "static/js/2.ae9aadd3.chunk.js",
     "static/css/main.ba1a534f.chunk.css",
-    "static/js/main.d95eb469.chunk.js"
+    "static/js/main.b126764c.chunk.js"
   ]
 }
