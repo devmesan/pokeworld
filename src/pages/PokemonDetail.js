@@ -11,7 +11,7 @@ import Loading from "../parts/Loading";
 import { initDetailPokemon } from "../store/actions/action.pokemon";
 import { savePokemonProcess } from "../store/actions/action.mypokemon";
 
-import { operatePokemon } from "../store/utility";
+import { alertApp, operatePokemon } from "../store/utility";
 
 import { ReactComponent as Save } from "../assets/icons/ic_save.svg";
 import { ReactComponent as ThumbDown } from "../assets/icons/ic_thumb_down.svg";
@@ -100,13 +100,32 @@ function PokemonDetail({ history }) {
                         setSavePokemonSuccess(true);
                     }
                 } else {
-                    alert(validate.message);
+                    let mode;
+                    mode = {
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                    };
+                    alertApp("error", validate.message, mode);
                 }
             } else {
-                alert("Only Character Alphanumeric Allowed");
+                let message =
+                    "Only Character <b>Alphanumeric Allowed</b> for Nickname";
+                let mode;
+                mode = {
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                };
+                alertApp("error", message, mode);
             }
         } else {
-            alert("Please Input Value");
+            let message =
+                "Please <b>Input Nickname</b></b>, before save Pokemon";
+            let mode;
+            mode = {
+                autoClose: 3000,
+                hideProgressBar: true,
+            };
+            alertApp("error", message, mode);
         }
     };
 
@@ -126,7 +145,6 @@ function PokemonDetail({ history }) {
                                     <input
                                         name="nickname"
                                         type="text"
-                                        required
                                         className="focus:outline-none border rounded px-2 py-1 mb-6"
                                         placeholder="Nickname"
                                     />

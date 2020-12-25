@@ -1,5 +1,5 @@
 import * as actionTypesMyPokemon from "../types/type.mypokemon";
-import { alert } from "../utility";
+import { alertApp } from "../utility";
 
 export const savePokemon = () => {
     return {
@@ -45,7 +45,7 @@ export const savePokemonProcess = (payload) => {
                 autoClose: 3000,
                 hideProgressBar: true,
             };
-            alert("success", payload.message, mode);
+            alertApp("success", payload.message, mode);
         } catch (error) {
             let payload = {
                 message:
@@ -142,7 +142,7 @@ export const removePokemonProcess = (payload) => {
                 autoClose: 3000,
                 hideProgressBar: true,
             };
-            alert("success", payload.message, mode);
+            alertApp("success", payload.message, mode);
         } catch (error) {
             let payload = {
                 message:
@@ -187,7 +187,7 @@ export const removeAllPokemonProcess = () => {
                 autoClose: 3000,
                 hideProgressBar: true,
             };
-            alert("success", payload.message, mode);
+            alertApp("success", payload.message, mode);
         } catch (error) {
             let payload = {
                 message:

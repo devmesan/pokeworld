@@ -2,7 +2,7 @@ import parse from "html-react-parser";
 import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const alert = (type = "default", message, mode) => {
+export const alertApp = (type = "default", message, mode) => {
     let messageParse, options;
     messageParse = <div>{parse(message)}</div>;
     options = {

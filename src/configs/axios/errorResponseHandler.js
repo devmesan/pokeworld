@@ -1,4 +1,4 @@
-import { alert } from "../../store/utility";
+import { alertApp } from "../../store/utility";
 
 function errorResponseHandler(error) {
     if (error) {
@@ -9,7 +9,7 @@ function errorResponseHandler(error) {
                 autoClose: 3000,
                 hideProgressBar: true,
             };
-            alert("error", message, mode);
+            alertApp("error", message, mode);
 
             return Promise.reject(error);
         } else if (error.response) {
@@ -20,7 +20,7 @@ function errorResponseHandler(error) {
                 autoClose: 3000,
                 hideProgressBar: true,
             };
-            alert("error", message, mode);
+            alertApp("error", message, mode);
 
             return Promise.reject(error);
         }
