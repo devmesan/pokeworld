@@ -23,7 +23,10 @@ export default function NotFound() {
             </p>
             <Link
                 className="px-6 py-3 mt-5 text-white transition-all duration-200 bg-red-400 shadow-inner hover:bg-red-500 focus:outline-none font-medium rounded"
-                to="/"
+                to={{
+                    pathname: "/",
+                    hash: "#",
+                }}
             >
                 Back to Home
             </Link>
