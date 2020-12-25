@@ -212,9 +212,9 @@ function PokemonDetail({ history }) {
                             <>
                                 <div className="pokemonDetail">
                                     <div className="space-y-4">
-                                        <span className="flex mt-4 justify-center">
+                                        <span className="flex mt-4 justify-center holder items-center rounded-3xl w-3/5 place-self-center relative z-0 ml-10 mr-10 pattern-pokemon-pic bg-manatee-50 bg-center">
                                             <img
-                                                className="object-fill h-96 w-96 box-content p-4 border-4 pattern-pokemon-pic "
+                                                className="object-fill h-96 w-96 box-content border-1 border-manatee-100 z-20 bg-manatee-200 bg-opacity-30"
                                                 src={
                                                     POKEMON.pokemonDetail
                                                         .sprites.front_default

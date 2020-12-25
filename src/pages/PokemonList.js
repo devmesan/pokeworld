@@ -90,13 +90,13 @@ function PokemonList({ history }) {
                         (POKEMON.pokemons.length > 0 ? (
                             <>
                                 <div className="flex m-4 gap-2 text-center font-bold text-gray-800">
-                                    <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400">
+                                    <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400 border border-gray-400">
                                         No
                                     </span>
-                                    <span className="w-6/12 sm:w-8/12 py-2 bg-gray-400">
+                                    <span className="w-6/12 sm:w-8/12 py-2 bg-gray-400 border border-gray-400">
                                         Pokemon
                                     </span>
-                                    <span className="w-4/12 sm:w-3/12  py-2 bg-gray-400">
+                                    <span className="w-4/12 sm:w-3/12 py-2 bg-gray-400 border border-gray-400">
                                         Total
                                     </span>
                                 </div>

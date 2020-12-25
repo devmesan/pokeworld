@@ -78,16 +78,16 @@ function MyPokemonList({ history }) {
                         (MYPOKEMON.ownPokemon.length > 0 ? (
                             <>
                                 <div className="flex m-4 gap-1 text-center font-bold text-gray-800">
-                                    <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400">
+                                    <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400 border border-gray-400">
                                         No
                                     </span>
-                                    <span className="w-4/12 sm:w-4/12 py-2 bg-gray-400">
+                                    <span className="w-4/12 sm:w-4/12 py-2 bg-gray-400 border border-gray-400">
                                         Pokemon
                                     </span>
-                                    <span className="w-4/12 sm:w-5/12 py-2 bg-gray-400">
+                                    <span className="w-4/12 sm:w-5/12 py-2 bg-gray-400 border border-gray-400">
                                         Nickname
                                     </span>
-                                    <span className="w-2/12 sm:w-2/12 py-2 bg-gray-400">
+                                    <span className="w-2/12 sm:w-2/12 py-2 bg-gray-400 border border-gray-400">
                                         Action
                                     </span>
                                 </div>
