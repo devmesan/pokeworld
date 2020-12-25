@@ -62,7 +62,7 @@ function MyPokemonList({ history }) {
                     <>
                         <div className="m-4 mb-0 inline-flex">
                             <Cube className="h-8 w-8 mr-1 self-center fill-current text-cerulean-500"></Cube>
-                            <span className="text-gray-700 text-3xl font-extrabold">
+                            <span className="text-gray-700 text-3xl font-extrabold uppercase">
                                 My Pokemon List
                             </span>
                         </div>
