@@ -1,5 +1,4 @@
 import axios from "axios";
-
 import errorResponseHandler from "./errorResponseHandler";
 
 const instance = axios.create({

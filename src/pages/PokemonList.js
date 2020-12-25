@@ -1,43 +1,67 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../parts/Header";
 import ListPokemonItem from "../parts/ListPokemonItem";
+import Menu from "../parts/Menu";
 import Footer from "../parts/Footer";
 
 import Loading from "../parts/Loading";
 
-import { initPokemon } from "../store/actions/action.pokemon";
+import {
+    initPokemon,
+    changeHomePage,
+    detailPokemonId,
+} from "../store/actions/action.pokemon";
+
+import { ReactComponent as Cube } from "../assets/icons/ic_cube.svg";
+import { ReactComponent as ChevronDoubleLeft } from "../assets/icons/ic_chevron_double_left.svg";
+import { ReactComponent as ChevronDoubleRight } from "../assets/icons/ic_chevron_double_right.svg";
 
 function PokemonList({ history }) {
     const dispatch = useDispatch();
+
     const POKEMON = useSelector((state) => state.pokemon);
     const MYPOKEMON = useSelector((state) => state.mypokemon);
 
-    // const pokeChance = () => {
-    //     const pokeChance = [0, 1].sort(() => Math.random() - 0.5)[0];
-
-    //     if (pokeChance) console.log("Gotcha");
-    //     else console.log("Oh failed, try again!");
-    // };
-
-    // pokeChance();
-
     useEffect(() => {
-        document.title = "Front End || Pokemon List Page";
+        document.title = "Poke World || Pokemon Page";
         window.scroll(0, 0);
-        dispatch(initPokemon({ url: POKEMON.url }));
-    }, [dispatch, POKEMON.url]);
+        dispatch(
+            initPokemon({
+                url: POKEMON.url,
+                pokemonCollection: MYPOKEMON.pokemonCollection,
+            })
+        );
+    }, [dispatch, POKEMON.url, MYPOKEMON.pokemonCollection]);
 
-    const purchaseContinueHandler = () => {
-        // const payload = {
-        //     products: POKEMON.pokemons,
-        //     totalPokemonOwn: POKEMON.COUNTPokeOwn,
-        // };
-        // dispatch(initPokemon(payload));
-        history.push("/checkout");
+    const switchPokemonHandler = (change) => {
+        let tempUrl;
+        if (change === "next") {
+            tempUrl = POKEMON.nextUrl;
+        } else if (change === "previous") {
+            tempUrl = POKEMON.prevUrl;
+        } else {
+            tempUrl = POKEMON.urlFirstPage;
+        }
+        let payload = {
+            url: tempUrl,
+        };
+        dispatch(changeHomePage(payload));
+    };
+
+    const detailPokemonHandler = (pokemonId) => {
+        let payload = {
+            pokemonId: pokemonId,
+        };
+        dispatch(detailPokemonId(payload));
+        history.push(`/pokemon-detail/${pokemonId}`);
+    };
+
+    const myPokemonHandler = (pokemonId) => {
+        history.push(`/my-pokemon-list`);
     };
 
     return (
@@ -47,8 +71,10 @@ function PokemonList({ history }) {
                 <Header counter={MYPOKEMON.totalOwnPokemon}></Header>
                 <main className="site-content">
                     <>
-                        <div className="m-4">
-                            <span className="text-gray-800 text-3xl font-extrabold">
+                        <div className="m-4 mb-0 inline-flex">
+                            <Cube className="h-8 w-8 mr-1 self-center fill-current text-cerulean-500"></Cube>
+
+                            <span className="text-gray-700 text-3xl font-extrabold">
                                 Pokemon List
                             </span>
                         </div>
@@ -61,7 +87,7 @@ function PokemonList({ history }) {
                         </>
                     )}
                     {POKEMON.error === false &&
-                        (POKEMON.count > 0 ? (
+                        (POKEMON.pokemons.length > 0 ? (
                             <>
                                 <div className="flex m-4 gap-2 text-center font-bold text-gray-800">
                                     <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400">
@@ -76,12 +102,6 @@ function PokemonList({ history }) {
                                 </div>
                                 {Object.values(POKEMON.pokemons)?.map?.(
                                     (item, index) => {
-                                        let str = item.url;
-                                        let res = str.split(
-                                            "https://pokeapi.co/api/v2/pokemon/"
-                                        );
-                                        let id = res[1].replace("/", "");
-
                                         return (
                                             <div
                                                 className="ListPokemonItem hover:bg-blue-400 flex m-4 gap-2"
@@ -89,23 +109,41 @@ function PokemonList({ history }) {
                                             >
                                                 <ListPokemonItem
                                                     pokemon={item.name}
-                                                    pokemonId={id}
-                                                    url={item.url}
+                                                    showNickname={false}
+                                                    pokemonId={item.pokemonId}
                                                     value={
                                                         POKEMON.pokemons[index]
                                                             .totalOwnPokemon
                                                     }
-                                                    quantity={0}
-                                                    max={99}
-                                                    adjust={false}
-                                                    countering={index + 1}
+                                                    countering={
+                                                        POKEMON.startNumPokemon +
+                                                        index
+                                                    }
+                                                    pokemonDetail={() =>
+                                                        detailPokemonHandler(
+                                                            item.pokemonId
+                                                        )
+                                                    }
+                                                    showTotal={true}
+                                                    showAction={false}
+                                                    classTotalItem="w-4/12 sm:w-3/12"
+                                                    classActionItem=""
                                                 ></ListPokemonItem>
                                             </div>
                                         );
                                     }
                                 )}
-                                <p className="m-5 text-gray-700 font-bold text-xl">
-                                    Total Pokemon : {POKEMON.count}
+                                <p className="m-5 p-2 text-gray-600 font-bold text-base">
+                                    Total Pokemon (Owned) :{" "}
+                                    {MYPOKEMON.totalOwnPokemon}
+                                    <br />
+                                    Total Pokemon Collection :{" "}
+                                    {MYPOKEMON.totalPokemonCollection}
+                                    <br />
+                                    Total Pokemon : {POKEMON.totalPokemon}
+                                    <br />
+                                    Page : {POKEMON.currentPage} of{" "}
+                                    {POKEMON.lastPage}
                                 </p>
                             </>
                         ) : (
@@ -113,25 +151,55 @@ function PokemonList({ history }) {
                                 <p className="m-5 text-red-700 text-center text-2xl font-bold">
                                     Data Tidak Tersedia.
                                 </p>
-                                <p className="m-5 text-gray-700 font-bold text-xl">
-                                    Total Pokemon : {POKEMON.count}
+                                <p className="m-5 text-gray-700 font-bold text-base">
+                                    Total Pokemon (Owned) :{" "}
+                                    {MYPOKEMON.totalOwnPokemon}
+                                    <br />
+                                    Total Pokemon Collection :{" "}
+                                    {MYPOKEMON.totalPokemonCollection}
+                                    <br />
+                                    Total Pokemon : {POKEMON.totalPokemon}
+                                    <br />
+                                    Page : {POKEMON.currentPage} of{" "}
+                                    {POKEMON.lastPage}
                                 </p>
                             </>
                         ))}
-                    <div className="flex justify-end m-5">
-                        {POKEMON.error === false && (
+                    <div className="mr-5 ml-5">
+                        {POKEMON.error === false && POKEMON.prevUrl !== null && (
                             <>
                                 <button
-                                    className="bg-blue-500 hover:bg-blue-700 focus:outline-none p-3 m-0 text-white font-medium rounded"
-                                    onClick={purchaseContinueHandler}
+                                    className="col-auto inline-flex float-left bg-chocolate-500 hover:bg-chocolate-700 focus:outline-none p-3 mb-10 text-white font-semibold rounded"
+                                    onClick={() =>
+                                        switchPokemonHandler("previous")
+                                    }
+                                >
+                                    <ChevronDoubleLeft className="h-5 w-5 mr-1 self-center fill-current"></ChevronDoubleLeft>
+                                    Previous
+                                </button>
+                            </>
+                        )}
+                        {POKEMON.error === false && POKEMON.nextUrl !== null && (
+                            <>
+                                <button
+                                    className="col-auto inline-flex float-right bg-shamrock-500 hover:bg-shamrock-700 focus:outline-none p-3 mb-10 text-white font-semibold rounded"
+                                    onClick={() => switchPokemonHandler("next")}
                                 >
                                     Next
+                                    <ChevronDoubleRight className="h-5 w-5 ml-1 self-center fill-current"></ChevronDoubleRight>
                                 </button>
                             </>
                         )}
                     </div>
                 </main>
-                <Footer></Footer>
+                <Menu
+                    showMenu={true}
+                    classPokemon="cursor-default"
+                    classMyPokemon="cursor-pointer"
+                    canClick="myPokemon"
+                    methodClick={() => myPokemonHandler()}
+                />
+                <Footer />
             </div>
         </>
     );

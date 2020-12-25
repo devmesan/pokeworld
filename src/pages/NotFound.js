@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import notfound from "../assets/img/notfound.jpg";
+import notfound from "../assets/images/notfound.jpg";
 
 export default function NotFound() {
     useEffect(() => {
-        document.title = "Front End || Not Found Page";
+        document.title = "Poke World || Not Found Page";
         window.scroll(0, 0);
     }, []);
 

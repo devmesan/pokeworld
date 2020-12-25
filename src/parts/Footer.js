@@ -1,11 +1,13 @@
 import React from "react";
 
-export default function Footer(props) {
+export default function Footer() {
     return (
-        <footer className="site-footer p-6 mt-4 bg-blue-600 text-center">
-            <span className="text-white text-4xl font-extrabold">
-                Have Fun !!
-            </span>
-        </footer>
+        <>
+            <footer className="site-footer p-4 bg-blue-600 text-center">
+                <p className="m-1 text-white text-4xl font-extrabold">
+                    Have Fun !!
+                </p>
+            </footer>
+        </>
     );
 }

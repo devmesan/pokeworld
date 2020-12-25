@@ -16,7 +16,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export default () => {
+const storeData = () => {
     const devTools =
         process.env.NODE_ENV === "production"
             ? applyMiddleware(...middleware)
@@ -32,3 +32,5 @@ export default () => {
     let persistor = persistStore(store);
     return { store, persistor };
 };
+
+export default storeData;

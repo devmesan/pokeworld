@@ -1,55 +1,184 @@
 import React, { useState, useEffect } from "react";
 import { Redirect, withRouter } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../parts/Header";
-import ListPokemonItem from "../parts/ListPokemonItem";
+import Menu from "../parts/Menu";
 import Footer from "../parts/Footer";
 
 import Loading from "../parts/Loading";
 
-import { initPokemon } from "../store/actions/action.pokemon";
+import { initDetailPokemon } from "../store/actions/action.pokemon";
+import { savePokemonProcess } from "../store/actions/action.mypokemon";
+
+import { operatePokemon } from "../store/utility";
+
+import { ReactComponent as Save } from "../assets/icons/ic_save.svg";
+import { ReactComponent as ThumbDown } from "../assets/icons/ic_thumb_down.svg";
+import { ReactComponent as PencilAlt } from "../assets/icons/ic_pencil_alt.svg";
+import { ReactComponent as Sparkles } from "../assets/icons/ic_sparkles.svg";
+import { ReactComponent as Support } from "../assets/icons/ic_support.svg";
+import { ReactComponent as DocumentSearch } from "../assets/icons/ic_document_search.svg";
+import { ReactComponent as Fire } from "../assets/icons/ic_fire.svg";
+import { ReactComponent as BookOpen } from "../assets/icons/ic_book_open.svg";
+import { ReactComponent as ChevronDoubleLeft } from "../assets/icons/ic_chevron_double_left.svg";
 
 function PokemonDetail({ history }) {
     const dispatch = useDispatch();
+
+    const [catchPokemon, setCatchPokemon] = useState({
+        getPokemon: null,
+        message: "",
+    });
+    const [savePokemonSuccess, setSavePokemonSuccess] = useState(false);
+
     const POKEMON = useSelector((state) => state.pokemon);
     const MYPOKEMON = useSelector((state) => state.mypokemon);
 
-    // const pokeChance = () => {
-    //     const pokeChance = [0, 1].sort(() => Math.random() - 0.5)[0];
-
-    //     if (pokeChance) console.log("Gotcha");
-    //     else console.log("Oh failed, try again!");
-    // };
-
-    // pokeChance();
-
     useEffect(() => {
-        document.title = "Front End || Pokemon List Page";
+        document.title = "Poke World || Pokemon Detail Page";
         window.scroll(0, 0);
-        dispatch(initPokemon({ url: POKEMON.url }));
-    }, [dispatch, POKEMON.url]);
+        dispatch(initDetailPokemon({ pokemonId: POKEMON.viewDetailPokemonId }));
+    }, [dispatch, POKEMON.viewDetailPokemonId]);
 
-    const purchaseContinueHandler = () => {
-        // const payload = {
-        //     products: POKEMON.pokemons,
-        //     totalPokemonOwn: POKEMON.COUNTPokeOwn,
-        // };
-        // dispatch(initPokemon(payload));
-        history.push("/checkout");
+    const pokeChance = () => {
+        const pokeChance = [0, 1].sort(() => Math.random() - 0.5)[0];
+        if (pokeChance)
+            setCatchPokemon({
+                getPokemon: true,
+                message: "Gotcha",
+            });
+        else
+            setCatchPokemon({
+                getPokemon: false,
+                message: "Oh failed, try again!",
+            });
     };
+
+    const myPokemonHandler = (pokemonId) => {
+        history.push(`/my-pokemon-list`);
+    };
+
+    const leavePokemonHandler = (e) => {
+        setCatchPokemon({
+            getPokemon: null,
+            message: "",
+        });
+    };
+
+    const backHandler = () => {
+        history.goBack();
+    };
+
+    const validateAlphaNumeric = (input) => {
+        var letters = /^[0-9a-zA-Z\s]+$/;
+        if (input.match(letters)) {
+            return true;
+        }
+        return false;
+    };
+
+    const submit = (e) => {
+        e.preventDefault();
+        let nickname = e.target.nickname.value;
+        if (nickname.trim() !== "") {
+            let res = validateAlphaNumeric(nickname);
+            let payload = {
+                pokemonId: POKEMON.viewDetailPokemonId,
+                name: POKEMON.pokemonDetail.name,
+                nickname: nickname,
+            };
+            let validate = operatePokemon(
+                MYPOKEMON.ownPokemon,
+                payload,
+                "validate"
+            );
+            if (res === true) {
+                if (validate.resValidate === false) {
+                    dispatch(savePokemonProcess(payload));
+                    if (!MYPOKEMON.error) {
+                        setSavePokemonSuccess(true);
+                    }
+                } else {
+                    alert(validate.message);
+                }
+            } else {
+                alert("Only Character Alphanumeric Allowed");
+            }
+        } else {
+            alert("Please Input Value");
+        }
+    };
+
+    const formSubmitNickname = () => {
+        return (
+            <>
+                <div className="submitPokemon space-y-4 m-2 border-4 border-dashed border-steel-500 text-center">
+                    {catchPokemon.getPokemon === true ? (
+                        <>
+                            <span className="inline-flex mt-6 mb-6 justify-center font-bold text-2xl">
+                                <Sparkles className="h-8 w-8 mr-1 self-center fill-current text-mango-500"></Sparkles>
+                                {catchPokemon.message}
+                            </span>
+                            <form onSubmit={submit}>
+                                <span className="flex justify-center">
+                                    <PencilAlt className="h-8 w-8 mr-2 mb-6 self-center fill-current text-cerulean-500"></PencilAlt>
+                                    <input
+                                        name="nickname"
+                                        type="text"
+                                        required
+                                        className="focus:outline-none border rounded px-2 py-1 mb-6"
+                                        placeholder="Nickname"
+                                    />
+                                </span>
+                                <span className="flex justify-around">
+                                    <button
+                                        type="button"
+                                        className="col-auto inline-flex bg-cerise-500 hover:bg-cerise-700 focus:outline-none p-2 px-4 mb-6 text-white text-sm font-semibold rounded"
+                                        onClick={leavePokemonHandler}
+                                    >
+                                        <ThumbDown className="h-4 w-4 mr-1 self-center fill-current"></ThumbDown>
+                                        Leave
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="col-auto inline-flex bg-royalblue-500 hover:bg-royalblue-700 focus:outline-none p-2 px-4 mb-6 text-white text-sm font-semibold rounded"
+                                    >
+                                        <Save className="h-4 w-4 mr-1 self-center fill-current"></Save>
+                                        Save
+                                    </button>
+                                </span>
+                            </form>
+                        </>
+                    ) : (
+                        <>
+                            <span className="inline-flex mt-6 mb-6 justify-center font-semibold text-2xl">
+                                <Fire className="h-8 w-8 mr-1 self-center fill-current text-mango-500"></Fire>
+                                {catchPokemon.message}
+                            </span>
+                        </>
+                    )}
+                </div>
+            </>
+        );
+    };
+
+    const saveRedirect = savePokemonSuccess ? (
+        <Redirect to="/my-pokemon-list" />
+    ) : null;
 
     return (
         <>
+            {saveRedirect}
             {POKEMON.loading === true && <Loading></Loading>}
             <div className="site-container">
                 <Header counter={MYPOKEMON.totalOwnPokemon}></Header>
                 <main className="site-content">
                     <>
-                        <div className="m-4">
-                            <span className="text-gray-800 text-3xl font-extrabold">
-                                Pokemon List
+                        <div className="m-4 inline-flex">
+                            <BookOpen className="h-10 w-10 ml-6 mr-1 self-center fill-current text-cerulean-500"></BookOpen>
+                            <span className="text-gray-700 text-3xl font-extrabold uppercase">
+                                Information
                             </span>
                         </div>
                     </>
@@ -61,77 +190,234 @@ function PokemonDetail({ history }) {
                         </>
                     )}
                     {POKEMON.error === false &&
-                        (POKEMON.count > 0 ? (
+                        (parseInt(POKEMON.pokemonDetailId) > 0 ? (
                             <>
-                                <div className="flex m-4 gap-2 text-center font-bold text-gray-800">
-                                    <span className="w-2/12 sm:w-1/12 py-2 bg-gray-400">
-                                        No
-                                    </span>
-                                    <span className="w-6/12 sm:w-8/12 py-2 bg-gray-400">
-                                        Pokemon
-                                    </span>
-                                    <span className="w-4/12 sm:w-3/12  py-2 bg-gray-400">
-                                        Total
-                                    </span>
-                                </div>
-                                {Object.values(POKEMON.pokemons)?.map?.(
-                                    (item, index) => {
-                                        let str = item.url;
-                                        let res = str.split(
-                                            "https://pokeapi.co/api/v2/pokemon/"
-                                        );
-                                        let id = res[1].replace("/", "");
-
-                                        return (
-                                            <div
-                                                className="ListPokemonItem hover:bg-blue-400 flex m-4 gap-2"
-                                                key={index}
-                                            >
-                                                <ListPokemonItem
-                                                    pokemon={item.name}
-                                                    pokemonId={id}
-                                                    url={item.url}
-                                                    value={
-                                                        POKEMON.pokemons[index]
-                                                            .totalOwnPokemon
-                                                    }
-                                                    quantity={0}
-                                                    max={99}
-                                                    adjust={false}
-                                                    countering={index + 1}
-                                                ></ListPokemonItem>
+                                <div className="pokemonDetail">
+                                    <div className="space-y-4">
+                                        <span className="flex mt-4 justify-center">
+                                            <img
+                                                className="object-fill h-96 w-96 box-content p-4 border-4 pattern-pokemon-pic "
+                                                src={
+                                                    POKEMON.pokemonDetail
+                                                        .sprites.front_default
+                                                }
+                                                alt={`Pokemon ${POKEMON.pokemonDetail.name}`}
+                                            />
+                                        </span>
+                                        <span className="flex flex-col p-2">
+                                            <div className="bg-tomato-700 px-4 py-3 border-b rounded-t sm:px-6">
+                                                <span className="inline-flex text-xl font-medium text-white">
+                                                    <DocumentSearch className="h-5 w-5 mr-1 self-center fill-current text-white"></DocumentSearch>
+                                                    Details Pokemon
+                                                </span>
                                             </div>
-                                        );
-                                    }
-                                )}
-                                <p className="m-5 text-gray-700 font-bold text-xl">
-                                    Total Pokemon : {POKEMON.count}
-                                </p>
+                                            <div className="bg-white shadow overflow-hidden">
+                                                <ul className="divide-y-2 divide-gray-300">
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Name
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <p className="flex items-center text-sm font-medium text-gray-500 capitalize">
+                                                                        {
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .name
+                                                                        }
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Species
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <p className="flex items-center text-sm font-medium text-gray-500 capitalize">
+                                                                        {
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .species
+                                                                                .name
+                                                                        }
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Height
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <p className="flex items-center text-sm font-medium text-gray-500 capitalize">
+                                                                        {
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .height
+                                                                        }
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Weight
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <p className="flex items-center text-sm font-medium text-gray-500 capitalize">
+                                                                        {
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .weight
+                                                                        }
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Moves
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <ol className="list-decimal">
+                                                                        {Object.values(
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .moves
+                                                                        )?.map?.(
+                                                                            (
+                                                                                item,
+                                                                                index
+                                                                            ) => {
+                                                                                return (
+                                                                                    <li
+                                                                                        className="list-inside items-center text-sm font-medium text-gray-500 capitalize break-words"
+                                                                                        key={
+                                                                                            index
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            item
+                                                                                                .move
+                                                                                                .name
+                                                                                        }
+                                                                                    </li>
+                                                                                );
+                                                                            }
+                                                                        )}
+                                                                    </ol>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span className="block bg-gray-100 hover:bg-gray-200">
+                                                            <div className="px-4 py-2 sm:px-6">
+                                                                <div className="flex items-center justify-between">
+                                                                    <p className="text-sm font-bold text-gray-700 truncate">
+                                                                        Types
+                                                                    </p>
+                                                                </div>
+                                                                <div className="mt-2">
+                                                                    <ol className="list-decimal">
+                                                                        {Object.values(
+                                                                            POKEMON
+                                                                                .pokemonDetail
+                                                                                .types
+                                                                        )?.map?.(
+                                                                            (
+                                                                                item,
+                                                                                index
+                                                                            ) => {
+                                                                                return (
+                                                                                    <li
+                                                                                        className="list-inside items-center text-sm font-medium text-gray-500 capitalize break-words"
+                                                                                        key={
+                                                                                            index
+                                                                                        }
+                                                                                    >
+                                                                                        {
+                                                                                            item
+                                                                                                .type
+                                                                                                .name
+                                                                                        }
+                                                                                    </li>
+                                                                                );
+                                                                            }
+                                                                        )}
+                                                                    </ol>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </span>
+                                        <span className="flex justify-center">
+                                            <button
+                                                className="col-auto inline-flex bg-teal-500 hover:bg-teal-700 focus:outline-none p-3 text-white font-semibold rounded"
+                                                onClick={pokeChance}
+                                            >
+                                                <Support className="h-5 w-5 mr-2 self-center fill-current"></Support>
+                                                Throw Poke Ball
+                                                <Support className="h-5 w-5 ml-2 self-center fill-current"></Support>
+                                            </button>
+                                        </span>
+                                        {catchPokemon.getPokemon !== null &&
+                                            formSubmitNickname()}
+                                        <span className="flex justify-center"></span>
+                                    </div>
+                                </div>
                             </>
                         ) : (
                             <>
                                 <p className="m-5 text-red-700 text-center text-2xl font-bold">
                                     Data Tidak Tersedia.
                                 </p>
-                                <p className="m-5 text-gray-700 font-bold text-xl">
-                                    Total Pokemon : {POKEMON.count}
-                                </p>
                             </>
                         ))}
-                    <div className="flex justify-end m-5">
-                        {POKEMON.error === false && (
-                            <>
-                                <button
-                                    className="bg-blue-500 hover:bg-blue-700 focus:outline-none p-3 m-0 text-white font-medium rounded"
-                                    onClick={purchaseContinueHandler}
-                                >
-                                    Next
-                                </button>
-                            </>
-                        )}
+                    <div className="ml-5 mr-5">
+                        <button
+                            className="col-auto inline-flex float-left bg-chocolate-500 hover:bg-chocolate-700 focus:outline-none p-3 mt-14 mb-10 text-white font-semibold rounded"
+                            onClick={backHandler}
+                        >
+                            <ChevronDoubleLeft className="h-5 w-5 mr-1 self-center fill-current"></ChevronDoubleLeft>
+                            Back
+                        </button>
                     </div>
                 </main>
-                <Footer></Footer>
+                <Menu
+                    showMenu={false}
+                    classPokemon="cursor-default"
+                    classMyPokemon="cursor-pointer"
+                    canClick="myPokemon"
+                    methodClick={() => myPokemonHandler()}
+                />
+                <Footer />
             </div>
         </>
     );

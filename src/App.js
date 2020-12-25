@@ -22,7 +22,7 @@ function App() {
                     <Route exact path="/" component={PokemonList} />
                     <Route
                         exact
-                        path="/pokemon-detail"
+                        path="/pokemon-detail/:id"
                         component={PokemonDetail}
                     />
                     <Route

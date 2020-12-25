@@ -1,25 +1,26 @@
-import React from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { alert } from "../../store/utility";
 
 function errorResponseHandler(error) {
     if (error) {
-        let message;
+        let message, mode;
         if (!navigator.onLine) {
-            message = <div>Please check your internet connection.</div>;
-
-            toast.error(message);
+            message = "Please check your <b>Internet Connection</>";
+            mode = {
+                autoClose: 3000,
+                hideProgressBar: true,
+            };
+            alert("error", message, mode);
 
             return Promise.reject(error);
         } else if (error.response) {
-            message = (
-                <div>
-                    {error.response.status} {error.response.statusText} <br /> [
-                    {error.response.data.message}]
-                </div>
-            );
-
-            toast.error(message);
+            message = `
+                        [${error.response.status}] ${error.response.data}
+                    `;
+            mode = {
+                autoClose: 3000,
+                hideProgressBar: true,
+            };
+            alert("error", message, mode);
 
             return Promise.reject(error);
         }

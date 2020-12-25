@@ -1,6 +1,20 @@
 import * as actionTypesPokemon from "../types/type.pokemon";
 import pokemon from "../../constants/api/api.pokemon";
 
+export const changeHomePage = (payload) => {
+    return {
+        type: actionTypesPokemon.CHANGE_HOME_PAGE,
+        url: payload.url,
+    };
+};
+
+export const detailPokemonId = (payload) => {
+    return {
+        type: actionTypesPokemon.CHANGE_DETAIL_POKEMON_ID,
+        pokemonId: payload.pokemonId,
+    };
+};
+
 export const fetchPokemons = (payload) => {
     return {
         type: actionTypesPokemon.FETCH_POKEMON_LIST,
@@ -11,6 +25,7 @@ export const fetchPokemons = (payload) => {
 export const fetchPokemonsSuccess = (payload) => {
     return {
         type: actionTypesPokemon.FETCH_POKEMON_LIST_SUCCESS,
+        pokemonCollection: payload.pokemonCollection,
         message: payload.message,
         count: payload.data.count,
         next: payload.data.next,
@@ -28,34 +43,83 @@ export const fetchPokemonsFailed = (payload) => {
 };
 
 export const initPokemon = (payload) => {
-    const { url } = payload;
+    const { url, pokemonCollection } = payload;
     return (dispatch) => {
         dispatch(fetchPokemons());
         pokemon
             .getPokemon(url)
             .then((response) => {
-                console.log(response);
                 let payload = {
-                    message: "Berhasil Mengunduh Data",
+                    message: "Berhasil mengunduh data",
                     data: response.data,
                     url: url,
+                    pokemonCollection: pokemonCollection,
                 };
                 dispatch(fetchPokemonsSuccess(payload));
             })
             .catch((error) => {
-                console.log(error);
                 let payload = {
                     message:
-                        "Gagal Mengunduh Data, silahkan coba beberapa saat lagi",
+                        "Gagal mengunduh data, silahkan coba beberapa saat lagi",
                 };
                 dispatch(fetchPokemonsFailed(payload));
             });
     };
 };
 
-export const fetchSinglePokemon = (data) => {
+export const fetchDetailPokemon = (payload) => {
     return {
         type: actionTypesPokemon.FETCH_POKEMON_DETAILS,
-        payload: data,
+        payload: payload,
+    };
+};
+
+export const fetchDetailPokemonSuccess = (payload) => {
+    return {
+        type: actionTypesPokemon.FETCH_POKEMON_DETAILS_SUCCESS,
+        message: payload.message,
+        data: payload.data,
+        pokemonId: payload.pokemonId,
+    };
+};
+
+export const fetchDetailPokemonFailed = (payload) => {
+    return {
+        type: actionTypesPokemon.FETCH_POKEMON_DETAILS_FAILED,
+        message: payload.message,
+    };
+};
+
+export const initDetailPokemon = (payload) => {
+    const { pokemonId } = payload;
+    if (parseInt(pokemonId) < 1) {
+        return (dispatch) => {
+            dispatch(fetchDetailPokemon());
+            let payload = {
+                message:
+                    "Gagal data tidak valid, silahkan kembali ke halaman home terlebih dahulu untuk memilih Pokemon ulang",
+            };
+            dispatch(fetchDetailPokemonFailed(payload));
+        };
+    }
+    return (dispatch) => {
+        dispatch(fetchDetailPokemon());
+        pokemon
+            .getPokemonDetail(pokemonId)
+            .then((response) => {
+                let payload = {
+                    message: "Berhasil mengunduh data",
+                    data: response.data,
+                    pokemonId: response.data.id,
+                };
+                dispatch(fetchDetailPokemonSuccess(payload));
+            })
+            .catch((error) => {
+                let payload = {
+                    message:
+                        "Gagal mengunduh data, silahkan coba beberapa saat lagi",
+                };
+                dispatch(fetchDetailPokemonFailed(payload));
+            });
     };
 };
