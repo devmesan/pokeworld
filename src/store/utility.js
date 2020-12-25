@@ -72,14 +72,12 @@ export const operatePokemon = (myPokemon, pokemon, method = "add") => {
                 _item.nickname.toString().toLowerCase() ===
                 pokemon.nickname.toString().toLowerCase()
         );
-        // console.log("result operate index " + i);
         let payload = {
             resValidate: true,
             name: "",
             message: "",
         };
         if (i > -1) {
-            // available
             payload.resValidate = true;
             payload.name = myPokemon[i].name;
             payload.message =
@@ -109,7 +107,6 @@ export const operatePokemon = (myPokemon, pokemon, method = "add") => {
         const i = myPokemon.findIndex(
             (_item) => _item.pokemonId === pokemon.pokemonId
         );
-        // console.log("result operate index " + i);
         if (method === "add") {
             if (i > -1) {
                 myPokemon[i].quantity += pokemon.quantity;
@@ -117,18 +114,12 @@ export const operatePokemon = (myPokemon, pokemon, method = "add") => {
                 myPokemon.push(pokemon);
             }
         } else if (method === "remove") {
-            // console.log(myPokemon[i].quantity);
-            // console.log(pokemon.quantity);
             if (i > -1) {
                 myPokemon[i].quantity -= pokemon.quantity;
                 if (myPokemon[i].quantity === 0) {
                     myPokemon.splice(i, 1);
                 }
             }
-            // console.log(myPokemon[i].quantity);
-            // else {
-            //     myPokemon.splice(i, 1);
-            // }
         }
         return myPokemon;
     }
