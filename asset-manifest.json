@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/pokeworld/static/css/main.c44d0457.chunk.css",
-    "main.js": "/pokeworld/static/js/main.bfe6e6b7.chunk.js",
-    "main.js.map": "/pokeworld/static/js/main.bfe6e6b7.chunk.js.map",
-    "runtime-main.js": "/pokeworld/static/js/runtime-main.9faab730.js",
-    "runtime-main.js.map": "/pokeworld/static/js/runtime-main.9faab730.js.map",
+    "main.css": "/pokeworld/static/css/main.f71bcb0d.chunk.css",
+    "main.js": "/pokeworld/static/js/main.19c2c47d.chunk.js",
+    "main.js.map": "/pokeworld/static/js/main.19c2c47d.chunk.js.map",
+    "runtime-main.js": "/pokeworld/static/js/runtime-main.8e4c7bb4.js",
+    "runtime-main.js.map": "/pokeworld/static/js/runtime-main.8e4c7bb4.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/pokeworld/static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.cc338af3.chunk.js": "/pokeworld/static/js/2.cc338af3.chunk.js",
-    "static/js/2.cc338af3.chunk.js.map": "/pokeworld/static/js/2.cc338af3.chunk.js.map",
-    "static/js/3.f5871e42.chunk.js": "/pokeworld/static/js/3.f5871e42.chunk.js",
-    "static/js/3.f5871e42.chunk.js.map": "/pokeworld/static/js/3.f5871e42.chunk.js.map",
+    "static/js/2.0d6b2aa9.chunk.js": "/pokeworld/static/js/2.0d6b2aa9.chunk.js",
+    "static/js/2.0d6b2aa9.chunk.js.map": "/pokeworld/static/js/2.0d6b2aa9.chunk.js.map",
+    "static/js/3.26790e67.chunk.js": "/pokeworld/static/js/3.26790e67.chunk.js",
+    "static/js/3.26790e67.chunk.js.map": "/pokeworld/static/js/3.26790e67.chunk.js.map",
     "index.html": "/pokeworld/index.html",
     "static/css/2.ccc6f86f.chunk.css.map": "/pokeworld/static/css/2.ccc6f86f.chunk.css.map",
-    "static/css/main.c44d0457.chunk.css.map": "/pokeworld/static/css/main.c44d0457.chunk.css.map",
-    "static/js/2.cc338af3.chunk.js.LICENSE.txt": "/pokeworld/static/js/2.cc338af3.chunk.js.LICENSE.txt",
+    "static/css/main.f71bcb0d.chunk.css.map": "/pokeworld/static/css/main.f71bcb0d.chunk.css.map",
+    "static/js/2.0d6b2aa9.chunk.js.LICENSE.txt": "/pokeworld/static/js/2.0d6b2aa9.chunk.js.LICENSE.txt",
     "static/media/notfound.41d99d1f.jpg": "/pokeworld/static/media/notfound.41d99d1f.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9faab730.js",
+    "static/js/runtime-main.8e4c7bb4.js",
     "static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.cc338af3.chunk.js",
-    "static/css/main.c44d0457.chunk.css",
-    "static/js/main.bfe6e6b7.chunk.js"
+    "static/js/2.0d6b2aa9.chunk.js",
+    "static/css/main.f71bcb0d.chunk.css",
+    "static/js/main.19c2c47d.chunk.js"
   ]
 }
