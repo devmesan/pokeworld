@@ -8,7 +8,10 @@ import Footer from "../parts/Footer";
 
 import Loading from "../parts/Loading";
 
-import { initDetailPokemon } from "../store/actions/action.pokemon";
+import {
+    changeHomePage,
+    initDetailPokemon,
+} from "../store/actions/action.pokemon";
 import { savePokemonProcess } from "../store/actions/action.mypokemon";
 
 import {
@@ -73,7 +76,11 @@ function PokemonDetail({ history }) {
     };
 
     const backHandler = () => {
-        history.goBack();
+        let payload = {
+            url: POKEMON.url,
+        };
+        dispatch(changeHomePage(payload));
+        history.push(`/`);
     };
 
     const submit = (e) => {
