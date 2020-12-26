@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pokeworld/static/css/main.4b1451f9.chunk.css",
-    "main.js": "/pokeworld/static/js/main.554647fd.chunk.js",
-    "main.js.map": "/pokeworld/static/js/main.554647fd.chunk.js.map",
+    "main.js": "/pokeworld/static/js/main.33732c13.chunk.js",
+    "main.js.map": "/pokeworld/static/js/main.33732c13.chunk.js.map",
     "runtime-main.js": "/pokeworld/static/js/runtime-main.f1c7f67f.js",
     "runtime-main.js.map": "/pokeworld/static/js/runtime-main.f1c7f67f.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/pokeworld/static/css/2.ccc6f86f.chunk.css",
@@ -16,21 +16,21 @@
     "static/js/2.d892e257.chunk.js.LICENSE.txt": "/pokeworld/static/js/2.d892e257.chunk.js.LICENSE.txt",
     "static/media/completion_task.7fa24f0c.svg": "/pokeworld/static/media/completion_task.7fa24f0c.svg",
     "static/media/hunt.21a76670.svg": "/pokeworld/static/media/hunt.21a76670.svg",
-    "static/media/ic_book_open.1d20060f.svg": "/pokeworld/static/media/ic_book_open.1d20060f.svg",
-    "static/media/ic_chevron_double_left.c32756dd.svg": "/pokeworld/static/media/ic_chevron_double_left.c32756dd.svg",
-    "static/media/ic_chevron_double_right.f9c6a27e.svg": "/pokeworld/static/media/ic_chevron_double_right.f9c6a27e.svg",
-    "static/media/ic_collection.04baabfe.svg": "/pokeworld/static/media/ic_collection.04baabfe.svg",
-    "static/media/ic_cube.dcbbc7ac.svg": "/pokeworld/static/media/ic_cube.dcbbc7ac.svg",
-    "static/media/ic_document_search.c5acb5f8.svg": "/pokeworld/static/media/ic_document_search.c5acb5f8.svg",
-    "static/media/ic_fire.9e2888ee.svg": "/pokeworld/static/media/ic_fire.9e2888ee.svg",
-    "static/media/ic_globe.513e89bd.svg": "/pokeworld/static/media/ic_globe.513e89bd.svg",
-    "static/media/ic_home.b2962605.svg": "/pokeworld/static/media/ic_home.b2962605.svg",
-    "static/media/ic_pencil_alt.7a0429bd.svg": "/pokeworld/static/media/ic_pencil_alt.7a0429bd.svg",
-    "static/media/ic_save.adb2fa4f.svg": "/pokeworld/static/media/ic_save.adb2fa4f.svg",
-    "static/media/ic_sparkles.7446e790.svg": "/pokeworld/static/media/ic_sparkles.7446e790.svg",
-    "static/media/ic_support.97c1b4c7.svg": "/pokeworld/static/media/ic_support.97c1b4c7.svg",
-    "static/media/ic_thumb_down.3e46ac62.svg": "/pokeworld/static/media/ic_thumb_down.3e46ac62.svg",
-    "static/media/ic_trash.43c79ed7.svg": "/pokeworld/static/media/ic_trash.43c79ed7.svg",
+    "static/media/ic_book_open.01a5fa39.svg": "/pokeworld/static/media/ic_book_open.01a5fa39.svg",
+    "static/media/ic_chevron_double_left.aa12121c.svg": "/pokeworld/static/media/ic_chevron_double_left.aa12121c.svg",
+    "static/media/ic_chevron_double_right.3662df2e.svg": "/pokeworld/static/media/ic_chevron_double_right.3662df2e.svg",
+    "static/media/ic_collection.819c1eeb.svg": "/pokeworld/static/media/ic_collection.819c1eeb.svg",
+    "static/media/ic_cube.edb73e29.svg": "/pokeworld/static/media/ic_cube.edb73e29.svg",
+    "static/media/ic_document_search.60282e0f.svg": "/pokeworld/static/media/ic_document_search.60282e0f.svg",
+    "static/media/ic_fire.0a31af5f.svg": "/pokeworld/static/media/ic_fire.0a31af5f.svg",
+    "static/media/ic_globe.6ce74099.svg": "/pokeworld/static/media/ic_globe.6ce74099.svg",
+    "static/media/ic_home.2efa5b11.svg": "/pokeworld/static/media/ic_home.2efa5b11.svg",
+    "static/media/ic_pencil_alt.d3459e55.svg": "/pokeworld/static/media/ic_pencil_alt.d3459e55.svg",
+    "static/media/ic_save.b6fa4ee9.svg": "/pokeworld/static/media/ic_save.b6fa4ee9.svg",
+    "static/media/ic_sparkles.ba518fdb.svg": "/pokeworld/static/media/ic_sparkles.ba518fdb.svg",
+    "static/media/ic_support.751011e0.svg": "/pokeworld/static/media/ic_support.751011e0.svg",
+    "static/media/ic_thumb_down.8585cb0e.svg": "/pokeworld/static/media/ic_thumb_down.8585cb0e.svg",
+    "static/media/ic_trash.4b3641d4.svg": "/pokeworld/static/media/ic_trash.4b3641d4.svg",
     "static/media/no_data.86bd78ce.svg": "/pokeworld/static/media/no_data.86bd78ce.svg"
   },
   "entrypoints": [
@@ -38,6 +38,6 @@
     "static/css/2.ccc6f86f.chunk.css",
     "static/js/2.d892e257.chunk.js",
     "static/css/main.4b1451f9.chunk.css",
-    "static/js/main.554647fd.chunk.js"
+    "static/js/main.33732c13.chunk.js"
   ]
 }
