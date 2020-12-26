@@ -81,6 +81,11 @@ const fetchPokemonsSuccess = (state, action) => {
     endNumPokemon = offset;
     if (startNumPokemon === 0) {
         currentPage = state.firstPage;
+    } else if (
+        parseInt(offset) === parseInt(state.offset) &&
+        parseInt(limit) === parseInt(state.limit)
+    ) {
+        currentPage = state.currentPage;
     } else if (parseInt(offset) > parseInt(state.offset)) {
         currentPage = state.currentPage + 1;
     } else {

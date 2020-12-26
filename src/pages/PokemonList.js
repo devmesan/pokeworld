@@ -19,6 +19,7 @@ import {
 import { ReactComponent as Cube } from "../assets/icons/ic_cube.svg";
 import { ReactComponent as ChevronDoubleLeft } from "../assets/icons/ic_chevron_double_left.svg";
 import { ReactComponent as ChevronDoubleRight } from "../assets/icons/ic_chevron_double_right.svg";
+import { ReactComponent as NoData } from "../assets/images/no_data.svg";
 
 function PokemonList({ history }) {
     const dispatch = useDispatch();
@@ -133,36 +134,41 @@ function PokemonList({ history }) {
                                         );
                                     }
                                 )}
-                                <p className="m-5 p-2 text-gray-600 font-bold text-base">
-                                    Total Pokemon (Owned) :{" "}
-                                    {MYPOKEMON.totalOwnPokemon}
-                                    <br />
-                                    Total Pokemon Collection :{" "}
-                                    {MYPOKEMON.totalPokemonCollection}
-                                    <br />
-                                    Total Pokemon : {POKEMON.totalPokemon}
-                                    <br />
-                                    Page : {POKEMON.currentPage} of{" "}
-                                    {POKEMON.lastPage}
-                                </p>
+                                <div className="m-4 flex flex-col">
+                                    <p className="m-5 p-2 text-gray-600 font-bold text-base">
+                                        Total Pokemon (Owned) :{" "}
+                                        {MYPOKEMON.totalOwnPokemon}
+                                        <br />
+                                        Total Pokemon Collection :{" "}
+                                        {MYPOKEMON.totalPokemonCollection}
+                                        <br />
+                                        Total Pokemon : {POKEMON.totalPokemon}
+                                        <br />
+                                        Page : {POKEMON.currentPage} of{" "}
+                                        {POKEMON.lastPage}
+                                    </p>
+                                </div>
                             </>
                         ) : (
                             <>
-                                <p className="m-5 text-red-700 text-center text-2xl font-bold">
-                                    Data Tidak Tersedia.
-                                </p>
-                                <p className="m-5 text-gray-700 font-bold text-base">
-                                    Total Pokemon (Owned) :{" "}
-                                    {MYPOKEMON.totalOwnPokemon}
-                                    <br />
-                                    Total Pokemon Collection :{" "}
-                                    {MYPOKEMON.totalPokemonCollection}
-                                    <br />
-                                    Total Pokemon : {POKEMON.totalPokemon}
-                                    <br />
-                                    Page : {POKEMON.currentPage} of{" "}
-                                    {POKEMON.lastPage}
-                                </p>
+                                <div className="m-4 flex flex-col">
+                                    <NoData className="object-contain self-center h-24 m-5 md:h-48 w-full"></NoData>
+                                    <p className="m-5 text-red-700 text-center text-2xl font-bold">
+                                        Data Tidak Tersedia.
+                                    </p>
+                                    <p className="m-5 text-gray-700 font-bold text-base">
+                                        Total Pokemon (Owned) :{" "}
+                                        {MYPOKEMON.totalOwnPokemon}
+                                        <br />
+                                        Total Pokemon Collection :{" "}
+                                        {MYPOKEMON.totalPokemonCollection}
+                                        <br />
+                                        Total Pokemon : {POKEMON.totalPokemon}
+                                        <br />
+                                        Page : {POKEMON.currentPage} of{" "}
+                                        {POKEMON.lastPage}
+                                    </p>
+                                </div>
                             </>
                         ))}
                     <div className="mr-5 ml-5">

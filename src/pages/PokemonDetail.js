@@ -22,6 +22,8 @@ import { ReactComponent as DocumentSearch } from "../assets/icons/ic_document_se
 import { ReactComponent as Fire } from "../assets/icons/ic_fire.svg";
 import { ReactComponent as BookOpen } from "../assets/icons/ic_book_open.svg";
 import { ReactComponent as ChevronDoubleLeft } from "../assets/icons/ic_chevron_double_left.svg";
+import { ReactComponent as Hunt } from "../assets/images/hunt.svg";
+import { ReactComponent as NoData } from "../assets/images/no_data.svg";
 
 function PokemonDetail({ history }) {
     const dispatch = useDispatch();
@@ -196,7 +198,7 @@ function PokemonDetail({ history }) {
                         <div className="m-4 inline-flex">
                             <BookOpen className="h-10 w-10 ml-6 mr-1 self-center fill-current text-cerulean-500"></BookOpen>
                             <span className="text-gray-700 text-3xl font-extrabold uppercase">
-                                Information
+                                About {POKEMON.pokemonDetail.name}
                             </span>
                         </div>
                     </>
@@ -212,15 +214,19 @@ function PokemonDetail({ history }) {
                             <>
                                 <div className="pokemonDetail">
                                     <div className="space-y-4">
-                                        <span className="flex mt-4 justify-center holder items-center rounded-3xl w-3/5 place-self-center relative z-0 ml-10 mr-10 pattern-pokemon-pic bg-manatee-50 bg-center">
-                                            <img
-                                                className="object-fill h-96 w-96 box-content border-1 border-manatee-100 z-20 bg-manatee-200 bg-opacity-30"
-                                                src={
-                                                    POKEMON.pokemonDetail
-                                                        .sprites.front_default
-                                                }
-                                                alt={`Pokemon ${POKEMON.pokemonDetail.name}`}
-                                            />
+                                        <span className="flex ml-5 mr-5 p-2 relative justify-center items-center z-0">
+                                            <Hunt className="absolute object-contain self-center h-full w-full opacity-80"></Hunt>
+                                            <span className="bg-manatee-100 bg-opacity-10 z-30">
+                                                <img
+                                                    className="object-fill h-72 w-72 z-40"
+                                                    src={
+                                                        POKEMON.pokemonDetail
+                                                            .sprites
+                                                            .front_default
+                                                    }
+                                                    alt={`Pokemon ${POKEMON.pokemonDetail.name}`}
+                                                />
+                                            </span>
                                         </span>
                                         <span className="flex flex-col p-2">
                                             <div className="bg-tomato-700 px-4 py-3 border-b rounded-t sm:px-6">
@@ -413,9 +419,12 @@ function PokemonDetail({ history }) {
                             </>
                         ) : (
                             <>
-                                <p className="m-5 text-red-700 text-center text-2xl font-bold">
-                                    Data Tidak Tersedia.
-                                </p>
+                                <div className="m-4 flex flex-col">
+                                    <NoData className="object-contain self-center h-24 m-5 md:h-48 w-full"></NoData>
+                                    <p className="m-5 text-red-700 text-center text-2xl font-bold">
+                                        Data Tidak Tersedia.
+                                    </p>
+                                </div>
                             </>
                         ))}
                     <div className="ml-5 mr-5">

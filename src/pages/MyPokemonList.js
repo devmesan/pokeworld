@@ -19,6 +19,7 @@ import { changeHomePage } from "../store/actions/action.pokemon";
 
 import { ReactComponent as Cube } from "../assets/icons/ic_cube.svg";
 import { ReactComponent as Trash } from "../assets/icons/ic_trash.svg";
+import { ReactComponent as NoData } from "../assets/images/no_data.svg";
 
 function MyPokemonList({ history }) {
     const dispatch = useDispatch();
@@ -124,30 +125,35 @@ function MyPokemonList({ history }) {
                                         );
                                     }
                                 )}
-                                <p className="m-5 p-2 text-gray-600 font-bold text-base">
-                                    Total Pokemon (Owned) :{" "}
-                                    {MYPOKEMON.totalOwnPokemon}
-                                    <br />
-                                    Total Pokemon Collection :{" "}
-                                    {MYPOKEMON.totalPokemonCollection}
-                                    <br />
-                                    Total Pokemon : {POKEMON.totalPokemon}
-                                </p>
+                                <div className="flex flex-col">
+                                    <p className="m-5 p-2 text-gray-600 font-bold text-base">
+                                        Total Pokemon (Owned) :{" "}
+                                        {MYPOKEMON.totalOwnPokemon}
+                                        <br />
+                                        Total Pokemon Collection :{" "}
+                                        {MYPOKEMON.totalPokemonCollection}
+                                        <br />
+                                        Total Pokemon : {POKEMON.totalPokemon}
+                                    </p>
+                                </div>
                             </>
                         ) : (
                             <>
-                                <p className="m-5 text-red-700 text-center text-2xl font-bold">
-                                    Data Tidak Tersedia.
-                                </p>
-                                <p className="m-5 text-gray-700 font-bold text-base">
-                                    Total Pokemon (Owned) :{" "}
-                                    {MYPOKEMON.totalOwnPokemon}
-                                    <br />
-                                    Total Pokemon Collection :{" "}
-                                    {MYPOKEMON.totalPokemonCollection}
-                                    <br />
-                                    Total Pokemon : {POKEMON.totalPokemon}
-                                </p>
+                                <div className="m-4 flex flex-col">
+                                    <NoData className="object-contain self-center h-24 m-5 md:h-48 w-full"></NoData>
+                                    <p className="m-5 text-red-700 text-center text-2xl font-bold">
+                                        Data Tidak Tersedia.
+                                    </p>
+                                    <p className="m-5 text-gray-700 font-bold text-base">
+                                        Total Pokemon (Owned) :{" "}
+                                        {MYPOKEMON.totalOwnPokemon}
+                                        <br />
+                                        Total Pokemon Collection :{" "}
+                                        {MYPOKEMON.totalPokemonCollection}
+                                        <br />
+                                        Total Pokemon : {POKEMON.totalPokemon}
+                                    </p>
+                                </div>
                             </>
                         ))}
                     {MYPOKEMON.error === false &&
