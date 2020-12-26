@@ -11,7 +11,11 @@ import Loading from "../parts/Loading";
 import { initDetailPokemon } from "../store/actions/action.pokemon";
 import { savePokemonProcess } from "../store/actions/action.mypokemon";
 
-import { alertApp, operatePokemon } from "../store/utility";
+import {
+    validateAlphaNumeric,
+    alertApp,
+    operatePokemon,
+} from "../store/utility";
 
 import { ReactComponent as Save } from "../assets/icons/ic_save.svg";
 import { ReactComponent as ThumbDown } from "../assets/icons/ic_thumb_down.svg";
@@ -70,14 +74,6 @@ function PokemonDetail({ history }) {
 
     const backHandler = () => {
         history.goBack();
-    };
-
-    const validateAlphaNumeric = (input) => {
-        var letters = /^[0-9a-zA-Z\s]+$/;
-        if (input.match(letters)) {
-            return true;
-        }
-        return false;
     };
 
     const submit = (e) => {

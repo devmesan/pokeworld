@@ -2,6 +2,14 @@ import parse from "html-react-parser";
 import { toast, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+export const validateAlphaNumeric = (input) => {
+    var letters = /^[0-9a-zA-Z\s]+$/;
+    if (input.match(letters)) {
+        return true;
+    }
+    return false;
+};
+
 export const alertApp = (type = "default", message, mode) => {
     let messageParse, options;
     messageParse = <div>{parse(message)}</div>;
