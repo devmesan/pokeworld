@@ -1,19 +1,21 @@
 {
   "files": {
-    "main.css": "/pokeworld/static/css/main.ba1a534f.chunk.css",
-    "main.js": "/pokeworld/static/js/main.7605f582.chunk.js",
-    "main.js.map": "/pokeworld/static/js/main.7605f582.chunk.js.map",
+    "main.css": "/pokeworld/static/css/main.a7878983.chunk.css",
+    "main.js": "/pokeworld/static/js/main.d3b6094d.chunk.js",
+    "main.js.map": "/pokeworld/static/js/main.d3b6094d.chunk.js.map",
     "runtime-main.js": "/pokeworld/static/js/runtime-main.39f8b3b6.js",
     "runtime-main.js.map": "/pokeworld/static/js/runtime-main.39f8b3b6.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/pokeworld/static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.ae9aadd3.chunk.js": "/pokeworld/static/js/2.ae9aadd3.chunk.js",
-    "static/js/2.ae9aadd3.chunk.js.map": "/pokeworld/static/js/2.ae9aadd3.chunk.js.map",
+    "static/js/2.5c311d4b.chunk.js": "/pokeworld/static/js/2.5c311d4b.chunk.js",
+    "static/js/2.5c311d4b.chunk.js.map": "/pokeworld/static/js/2.5c311d4b.chunk.js.map",
     "static/js/3.092afb53.chunk.js": "/pokeworld/static/js/3.092afb53.chunk.js",
     "static/js/3.092afb53.chunk.js.map": "/pokeworld/static/js/3.092afb53.chunk.js.map",
     "index.html": "/pokeworld/index.html",
     "static/css/2.ccc6f86f.chunk.css.map": "/pokeworld/static/css/2.ccc6f86f.chunk.css.map",
-    "static/css/main.ba1a534f.chunk.css.map": "/pokeworld/static/css/main.ba1a534f.chunk.css.map",
-    "static/js/2.ae9aadd3.chunk.js.LICENSE.txt": "/pokeworld/static/js/2.ae9aadd3.chunk.js.LICENSE.txt",
+    "static/css/main.a7878983.chunk.css.map": "/pokeworld/static/css/main.a7878983.chunk.css.map",
+    "static/js/2.5c311d4b.chunk.js.LICENSE.txt": "/pokeworld/static/js/2.5c311d4b.chunk.js.LICENSE.txt",
+    "static/media/completion_task.7fa24f0c.svg": "/pokeworld/static/media/completion_task.7fa24f0c.svg",
+    "static/media/hunt.21a76670.svg": "/pokeworld/static/media/hunt.21a76670.svg",
     "static/media/ic_book_open.1d20060f.svg": "/pokeworld/static/media/ic_book_open.1d20060f.svg",
     "static/media/ic_chevron_double_left.c32756dd.svg": "/pokeworld/static/media/ic_chevron_double_left.c32756dd.svg",
     "static/media/ic_chevron_double_right.f9c6a27e.svg": "/pokeworld/static/media/ic_chevron_double_right.f9c6a27e.svg",
@@ -29,13 +31,13 @@
     "static/media/ic_support.97c1b4c7.svg": "/pokeworld/static/media/ic_support.97c1b4c7.svg",
     "static/media/ic_thumb_down.3e46ac62.svg": "/pokeworld/static/media/ic_thumb_down.3e46ac62.svg",
     "static/media/ic_trash.43c79ed7.svg": "/pokeworld/static/media/ic_trash.43c79ed7.svg",
-    "static/media/notfound.41d99d1f.jpg": "/pokeworld/static/media/notfound.41d99d1f.jpg"
+    "static/media/no_data.86bd78ce.svg": "/pokeworld/static/media/no_data.86bd78ce.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.39f8b3b6.js",
     "static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.ae9aadd3.chunk.js",
-    "static/css/main.ba1a534f.chunk.css",
-    "static/js/main.7605f582.chunk.js"
+    "static/js/2.5c311d4b.chunk.js",
+    "static/css/main.a7878983.chunk.css",
+    "static/js/main.d3b6094d.chunk.js"
   ]
 }
