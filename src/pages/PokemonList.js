@@ -69,7 +69,7 @@ function PokemonList({ history }) {
         <>
             {POKEMON.loading === true && <Loading></Loading>}
             <div className="site-container">
-                <Header counter={MYPOKEMON.totalOwnPokemon}></Header>
+                <Header />
                 <main className="site-content">
                     <>
                         <div className="m-4 mb-0 inline-flex">

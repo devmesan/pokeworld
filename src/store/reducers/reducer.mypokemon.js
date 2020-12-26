@@ -1,5 +1,5 @@
 import * as actionTypesMyPokemon from "../types/type.mypokemon";
-import { operatePokemon, updateObject } from "../utility";
+import { operatePokemon, updateObject } from "../../utility/utility";
 
 const initialState = {
     pokemonCollection: [],

@@ -4,7 +4,6 @@ import { createBrowserHistory } from "history";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import "./styles/style.scss";
 import "./styles/main.css";
 
 import PokemonList from "./pages/PokemonList";

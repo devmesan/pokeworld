@@ -1,4 +1,4 @@
-import { alertApp } from "../../store/utility";
+import { alertApp } from "../../utility/utility";
 
 function errorResponseHandler(error) {
     if (error) {

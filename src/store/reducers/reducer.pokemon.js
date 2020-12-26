@@ -1,5 +1,5 @@
 import * as actionTypesPokemon from "../types/type.pokemon";
-import { parsedUrl, updateObject } from "../utility";
+import { parsedUrl, updateObject } from "../../utility/utility";
 
 const initialState = {
     totalPage: 0,

@@ -1,5 +1,5 @@
 import * as actionTypesMyPokemon from "../types/type.mypokemon";
-import { alertApp } from "../utility";
+import { alertApp } from "../../utility/utility";
 
 export const savePokemon = () => {
     return {

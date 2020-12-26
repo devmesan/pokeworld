@@ -1395,6 +1395,16 @@ video {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+.site-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-content {
+  flex: 1;
+}
+
 @media (min-width: 640px) {
   .sm\:flex {
     display: flex;

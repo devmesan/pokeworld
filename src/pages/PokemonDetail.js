@@ -15,7 +15,7 @@ import {
     validateAlphaNumeric,
     alertApp,
     operatePokemon,
-} from "../store/utility";
+} from "../utility/utility";
 
 import { ReactComponent as Save } from "../assets/icons/ic_save.svg";
 import { ReactComponent as ThumbDown } from "../assets/icons/ic_thumb_down.svg";
@@ -188,7 +188,7 @@ function PokemonDetail({ history }) {
             {saveRedirect}
             {POKEMON.loading === true && <Loading></Loading>}
             <div className="site-container">
-                <Header counter={MYPOKEMON.totalOwnPokemon}></Header>
+                <Header />
                 <main className="site-content">
                     <>
                         <div className="m-4 inline-flex">
