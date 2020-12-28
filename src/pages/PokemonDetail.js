@@ -3,7 +3,6 @@ import { Redirect, withRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Header from "../parts/Header";
-import Menu from "../parts/Menu";
 import Footer from "../parts/Footer";
 
 import Loading from "../parts/Loading";
@@ -440,13 +439,6 @@ function PokemonDetail({ history }) {
                         </button>
                     </div>
                 </main>
-                <Menu
-                    showMenu={false}
-                    classPokemon="cursor-default"
-                    classMyPokemon="cursor-pointer"
-                    canClick="myPokemon"
-                    methodClick={() => myPokemonHandler()}
-                />
                 <Footer />
             </div>
         </>

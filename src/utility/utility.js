@@ -63,6 +63,7 @@ export const alertApp = (type = "default", message, mode) => {
 
 export const sumPropertyValue = (items, prop) =>
     items.reduce((a, b) => a + b[prop], 0);
+
 export const operatePokemon = (myPokemon, pokemon, method = "add") => {
     if (method === "validate") {
         // let i = -1;
@@ -89,19 +90,20 @@ export const operatePokemon = (myPokemon, pokemon, method = "add") => {
             payload.resValidate = true;
             payload.name = myPokemon[i].name;
             payload.message =
-                "Nickname Already taken with Pokemon " +
+                "Nickname Already taken with <b>Pokemon " +
                 myPokemon[i].name.replace(/\w\S*/g, (w) =>
                     w.replace(/^\w/, (c) => c.toUpperCase())
-                );
+                ) +
+                "</b>";
         } else {
             payload.resValidate = false;
             payload.name = pokemon.name;
             payload.message =
-                "Nickname with " +
+                "Nickname with <b>" +
                 pokemon.nickname.replace(/\w\S*/g, (w) =>
                     w.replace(/^\w/, (c) => c.toUpperCase())
                 ) +
-                " available";
+                "</b> available";
         }
         return payload;
     } else {

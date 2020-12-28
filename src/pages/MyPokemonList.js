@@ -172,10 +172,7 @@ function MyPokemonList({ history }) {
                         )}
                 </main>
                 <Menu
-                    showMenu={true}
-                    classPokemon="cursor-pointer"
-                    classMyPokemon="cursor-default"
-                    canClick="pokemon"
+                    isActive="menuMyPokemon"
                     methodClick={() => myPokemonHandler()}
                 />
                 <Footer />
